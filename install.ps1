@@ -30,7 +30,16 @@ $Skills = @(
     "stella-ip-episode",
     "stella-ip-script",
     "stella-ip-package",
-    "stella-ip-review"
+    "stella-ip-review",
+    "dbs",
+    "dbs-action",
+    "dbs-ai-check",
+    "dbs-benchmark",
+    "dbs-content",
+    "dbs-deconstruct",
+    "dbs-diagnosis",
+    "dbs-hook",
+    "dbs-xhs-title"
 )
 
 $MemoryFiles = @(
@@ -43,7 +52,7 @@ $MemoryFiles = @(
 function Get-SkillExtraFiles {
     param([string]$SkillName)
     $files = @()
-    if (-not $SkipOpenAIMetadata) {
+    if (-not $SkipOpenAIMetadata -and $SkillName -like "stella*") {
         $files += "agents/openai.yaml"
     }
     if ($SkillName -eq "stella-ip-director") {
@@ -134,6 +143,17 @@ if ($NeedsBlock) {
 - `/stella-ip-script` - Script, shot list, and filming package
 - `/stella-ip-package` - Hook, title, cover, caption, and AI-tone cleanup
 - `/stella-ip-review` - Post-publish review and iteration
+
+## Bundled DBS Dependencies
+- `/dbs` - DBS router
+- `/dbs-action` - Execution blocker diagnosis
+- `/dbs-ai-check` - AI-tone detection
+- `/dbs-benchmark` - Benchmark analysis
+- `/dbs-content` - Content strategy
+- `/dbs-deconstruct` - Concept deconstruction
+- `/dbs-diagnosis` - Business diagnosis
+- `/dbs-hook` - Hook optimization
+- `/dbs-xhs-title` - Xiaohongshu title formulas
 
 Memory: `memory/stella-ip-director/` (`ip-profile.md`, `topic-backlog.md`, `production-board.md`, `publishing-log.md`)
 '@ | Add-Content -LiteralPath $ClaudeMd

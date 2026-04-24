@@ -221,3 +221,18 @@ memory/stella-ip-director/ip-profile.md
 - `agents/openai.yaml` 只是可选展示元数据
 - 对不识别 `openai.yaml` 的智能体，一般会直接忽略，不影响使用
 - 如果你的智能体不是 Claude 风格目录，可以使用自定义路径安装
+## Bundled DBS Dependencies
+
+This kit bundles the DBS skills that Stella directly depends on, so it can run outside the original project without missing relative skill references.
+
+Included DBS skills:
+
+- `/dbs`
+- `/dbs-action`
+- `/dbs-ai-check`
+- `/dbs-benchmark`
+- `/dbs-content`
+- `/dbs-deconstruct`
+- `/dbs-diagnosis`
+- `/dbs-hook`
+- `/dbs-xhs-title`
