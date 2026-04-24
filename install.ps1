@@ -90,7 +90,7 @@ New-Item -ItemType Directory -Force -Path (Join-Path $Target $MemoryRoot) | Out-
 
 Write-Host "Installing skills..."
 foreach ($skill in $Skills) {
-    Install-File "skills/$skill/skill.md" (Join-Path $Target "$SkillsRoot/$skill/skill.md")
+    Install-File "skills/$skill/SKILL.md" (Join-Path $Target "$SkillsRoot/$skill/SKILL.md")
     foreach ($extra in Get-SkillExtraFiles $skill) {
         Install-File "skills/$skill/$extra" (Join-Path $Target "$SkillsRoot/$skill/$extra")
     }

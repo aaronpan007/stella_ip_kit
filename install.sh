@@ -106,7 +106,7 @@ mkdir -p "$TARGET/$MEMORY_ROOT"
 
 echo "Installing skills..."
 for skill in "${SKILLS[@]}"; do
-    install_file "skills/$skill/skill.md" "$TARGET/$SKILLS_ROOT/$skill/skill.md"
+    install_file "skills/$skill/SKILL.md" "$TARGET/$SKILLS_ROOT/$skill/SKILL.md"
     while IFS= read -r extra; do
         [ -n "$extra" ] || continue
         install_file "skills/$skill/$extra" "$TARGET/$SKILLS_ROOT/$skill/$extra"
