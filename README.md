@@ -36,30 +36,92 @@ This kit is for users who do not just want a few content ideas. It gives them a 
 
 ## Install
 
-### One-line local install
+### One-line install
+
+macOS / Linux:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.sh | bash
+```
+
+Install to a specific project:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.sh | bash -s /path/to/your/project
+```
+
+Windows PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1 | iex
+```
+
+Install to a specific project:
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1))) -Target "D:\path\to\your\project"
+```
+
+Windows CMD:
+
+```bat
+powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1 | iex"
+```
+
+Install to a specific project:
+
+```bat
+powershell -ExecutionPolicy Bypass -Command "& ([scriptblock]::Create((irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1))) -Target 'D:\path\to\your\project'"
+```
+
+### Clone and install locally
 
 On Windows PowerShell:
 
 ```powershell
-.\stella_ip_kit\install.ps1
+git clone https://github.com/aaronpan007/stella_ip_kit.git
+cd stella_ip_kit
+.\install.ps1
 ```
 
 To install into a specific project:
 
 ```powershell
-.\stella_ip_kit\install.ps1 D:\path\to\your\project
+git clone https://github.com/aaronpan007/stella_ip_kit.git
+cd stella_ip_kit
+.\install.ps1 D:\path\to\your\project
+```
+
+On Windows CMD:
+
+```bat
+git clone https://github.com/aaronpan007/stella_ip_kit.git
+cd stella_ip_kit
+install.cmd
+```
+
+To install into a specific project:
+
+```bat
+git clone https://github.com/aaronpan007/stella_ip_kit.git
+cd stella_ip_kit
+install.cmd D:\path\to\your\project
 ```
 
 On macOS or Linux:
 
 ```bash
-./stella_ip_kit/install.sh
+git clone https://github.com/aaronpan007/stella_ip_kit.git
+cd stella_ip_kit
+./install.sh
 ```
 
 To install into a specific project:
 
 ```bash
-./stella_ip_kit/install.sh /path/to/your/project
+git clone https://github.com/aaronpan007/stella_ip_kit.git
+cd stella_ip_kit
+./install.sh /path/to/your/project
 ```
 
 ### Portable install for non-Claude agents
@@ -89,28 +151,6 @@ INCLUDE_INSTRUCTIONS_BLOCK=0 \
 ./stella_ip_kit/install.sh /path/to/project
 ```
 
-### One-line remote install
-
-Windows PowerShell:
-
-```powershell
-irm https://raw.githubusercontent.com/<owner>/<repo>/main/stella_ip_kit/install.ps1 | iex
-```
-
-macOS or Linux:
-
-After publishing this folder to GitHub, users can install the full kit with:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/<owner>/<repo>/main/stella_ip_kit/install.sh | bash
-```
-
-Or install into a specific project:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/<owner>/<repo>/main/stella_ip_kit/install.sh | bash -s /path/to/your/project
-```
-
 ## What The Installer Does
 
 It installs:
@@ -125,6 +165,11 @@ It is safe to re-run:
 - existing files are skipped by default
 - memory files are only created if they do not already exist
 - the Stella block is only appended to `CLAUDE.md` once
+
+After install:
+
+- Open Claude Code and type `/stella`
+- or open your target agent and invoke the Stella skill using that agent's skill entrypoint
 
 After install, the user can immediately run:
 
