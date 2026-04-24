@@ -1,82 +1,74 @@
 # Stella IP Kit
 
-`stella_ip_kit` is a complete personal-IP directing system for founders, business owners, and operator-led brands.
+面向业务负责人、主理人、操盘手的个人 IP 编导系统。
 
-It packages the full Stella workflow into one installable skill kit so a user can install everything in one step and start with `/stella`.
+它不是单独帮你写几条文案，而是把这整条链路打包成可安装的 skill kit：
 
-## Cross-Agent Compatibility
+- 业务定向
+- 账号定位
+- 长期选题规划
+- 单期策划
+- 口播文案
+- 分镜与拍摄脚本
+- 标题、封面字、配文、去 AI 味
+- 发布后复盘
 
-The core of this kit is portable:
+## 安装
 
-- each skill lives in a plain `skill.md`
-- memory files are plain markdown
-- the workflow logic does not depend on one vendor
+### Claude Code
 
-The `agents/openai.yaml` files are optional metadata files. They are only there for agents or runtimes that read OpenAI/Codex-style display metadata such as skill display names and short descriptions.
+```bash
+claude plugin marketplace add aaronpan007/stella_ip_kit
+claude plugin install stella-ip-kit
+```
 
-For Claude Code, OpenCode, OpenClaw, or any other agent:
+### 通用安装方式（适用于 Codex / Claude Code）
 
-- if the agent ignores `agents/openai.yaml`, nothing breaks
-- if the agent does not support that file, you can skip installing it
-- the important files are still the `skill.md` files and the memory markdown files
+```bash
+npx skills add aaronpan007/stella_ip_kit
+```
 
-So no, `openai.yaml` should not harm other agents. At worst it is ignored. For stricter environments, use the installer switches to skip it.
+### 备用安装方式
 
-## What It Solves
-
-This kit is for users who do not just want a few content ideas. It gives them a business-first workflow from strategy to execution:
-
-- business direction
-- account positioning
-- long-range content planning
-- single-episode planning
-- talking-head scripts and shot lists
-- titles, covers, captions, and AI-tone cleanup
-- post-publish review and iteration
-
-## Install
-
-### One-line install
-
-macOS / Linux:
+macOS / Linux：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.sh | bash
 ```
 
-Install to a specific project:
+安装到指定项目：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.sh | bash -s /path/to/your/project
 ```
 
-Windows PowerShell:
+Windows PowerShell：
 
 ```powershell
 irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1 | iex
 ```
 
-Install to a specific project:
+安装到指定项目：
 
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1))) -Target "D:\path\to\your\project"
 ```
 
-Windows CMD:
+Windows CMD：
 
 ```bat
 powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1 | iex"
 ```
 
-Install to a specific project:
+安装到指定项目：
 
 ```bat
 powershell -ExecutionPolicy Bypass -Command "& ([scriptblock]::Create((irm https://raw.githubusercontent.com/aaronpan007/stella_ip_kit/main/install.ps1))) -Target 'D:\path\to\your\project'"
 ```
 
-### Clone and install locally
+### 本地 clone 后安装
 
-On Windows PowerShell:
+Windows PowerShell：
 
 ```powershell
 git clone https://github.com/aaronpan007/stella_ip_kit.git
@@ -84,15 +76,7 @@ cd stella_ip_kit
 .\install.ps1
 ```
 
-To install into a specific project:
-
-```powershell
-git clone https://github.com/aaronpan007/stella_ip_kit.git
-cd stella_ip_kit
-.\install.ps1 D:\path\to\your\project
-```
-
-On Windows CMD:
+Windows CMD：
 
 ```bat
 git clone https://github.com/aaronpan007/stella_ip_kit.git
@@ -100,15 +84,7 @@ cd stella_ip_kit
 install.cmd
 ```
 
-To install into a specific project:
-
-```bat
-git clone https://github.com/aaronpan007/stella_ip_kit.git
-cd stella_ip_kit
-install.cmd D:\path\to\your\project
-```
-
-On macOS or Linux:
+macOS / Linux：
 
 ```bash
 git clone https://github.com/aaronpan007/stella_ip_kit.git
@@ -116,296 +92,151 @@ cd stella_ip_kit
 ./install.sh
 ```
 
-To install into a specific project:
-
-```bash
-git clone https://github.com/aaronpan007/stella_ip_kit.git
-cd stella_ip_kit
-./install.sh /path/to/your/project
-```
-
-### Portable install for non-Claude agents
-
-If another agent uses a different skill directory or a different instruction file, install with custom paths.
-
-Windows PowerShell example:
-
-```powershell
-.\stella_ip_kit\install.ps1 `
-  -Target D:\path\to\project `
-  -SkillsRoot ".agents/skills" `
-  -MemoryRoot "memory/stella-ip-director" `
-  -InstructionsFile "AGENTS.md" `
-  -SkipOpenAIMetadata `
-  -SkipInstructionsBlock
-```
-
-macOS or Linux example:
-
-```bash
-SKILLS_ROOT=".agents/skills" \
-MEMORY_ROOT="memory/stella-ip-director" \
-INSTRUCTIONS_FILE="AGENTS.md" \
-INCLUDE_OPENAI_METADATA=0 \
-INCLUDE_INSTRUCTIONS_BLOCK=0 \
-./stella_ip_kit/install.sh /path/to/project
-```
-
-## What The Installer Does
-
-It installs:
-
-- 8 Stella skills into `.claude/skills/`
-- the required helper files inside each skill directory
-- 4 Stella memory templates into `memory/stella-ip-director/`
-- a Stella block into `CLAUDE.md`
-
-It is safe to re-run:
-
-- existing files are skipped by default
-- memory files are only created if they do not already exist
-- the Stella block is only appended to `CLAUDE.md` once
-
-After install:
-
-- Open Claude Code and type `/stella`
-- or open your target agent and invoke the Stella skill using that agent's skill entrypoint
-
-After install, the user can immediately run:
+安装完成后，直接输入：
 
 ```text
 /stella
 ```
+
+## 这套系统能解决什么
+
+这不是“给你几个选题灵感”的工具，而是一整套从业务到内容的个人 IP 生产系统。
+
+它主要解决 6 类问题：
+
+1. 不知道个人 IP 到底该为业务承担什么任务
+2. 不知道账号应该怎么定位，讲什么，不讲什么
+3. 不知道接下来一个月或前 10 期该拍什么
+4. 确定选题后，不知道怎么写成能拍的口播和脚本
+5. 不知道怎么做开头、标题、封面字、配文和去 AI 味
+6. 发完之后，不知道哪些内容该继续，哪些该停掉
+
+## Skill 列表
+
+### `/stella`
+
+入口和引导路由。
+
+解决：
+
+- 第一次来，不知道从哪里开始
+- 不知道该用哪个 skill
+- 想先看这套系统怎么用
+
+### `/stella-ip-direction`
+
+业务定向和账号定位。
+
+解决：
+
+- 你的业务是什么
+- 你的产品是什么
+- 谁是客户
+- 个人 IP 要承担什么任务
+- 账号应该怎么定位
+
+### `/stella-ip-planning`
+
+长期内容规划。
+
+解决：
+
+- 接下来一个月拍什么
+- 前 10 期拍什么
+- 内容支柱怎么搭
+- 选题优先级怎么排
+
+### `/stella-ip-episode`
+
+单期策划。
+
+解决：
+
+- 这期到底拍什么
+- 这期服务谁
+- 这期主要目标是什么
+- 这期更适合口播、口播加 B-roll，还是轻 vlog
+
+### `/stella-ip-script`
+
+脚本、分镜、拍摄执行包。
+
+解决：
+
+- 口播文案怎么写
+- 开头怎么抓人
+- 画面怎么配
+- 分镜和拍摄脚本怎么落地
+
+### `/stella-ip-package`
+
+发布包装和去 AI 味。
+
+解决：
+
+- 标题怎么起
+- 封面字怎么写
+- 配文怎么补
+- 哪些地方 AI 味太重
+
+### `/stella-ip-review`
+
+复盘和迭代。
+
+解决：
+
+- 什么内容有效
+- 什么内容无效
+- 下一批该怎么调整
+
+### `/stella-ip-director`
+
+一站式总控。
+
+解决：
+
+- 不想自己判断流程
+- 希望系统按阶段带着走
 
 ## Quick Start
 
-### 1. First Use
-
-Type:
+第一次使用，直接输入：
 
 ```text
 /stella
 ```
 
-Stella will:
+Stella 会先带你完成第一轮初始化：
 
-- introduce the system
-- explain which skills exist
-- route the user into the first setup step
-- start with business direction and account positioning
+- 业务定向
+- 账号定位
 
-That first setup writes:
+然后把结果沉淀进：
 
 ```text
 memory/stella-ip-director/ip-profile.md
 ```
 
-This becomes the base memory for the whole system.
+后续再继续做：
 
-### 2. Core Workflow
+1. `/stella-ip-planning`
+2. `/stella-ip-episode`
+3. `/stella-ip-script`
+4. `/stella-ip-package`
+5. `/stella-ip-review`
 
-The normal Stella flow is:
-
-1. `/stella`
-2. `/stella-ip-direction`
-3. `/stella-ip-planning`
-4. `/stella-ip-episode`
-5. `/stella-ip-script`
-6. `/stella-ip-package`
-7. `/stella-ip-review`
-
-### 3. Typical Usage
-
-Start from the router:
+## 目录结构
 
 ```text
-/stella
-/stella I'm starting from scratch
-/stella Help me figure out what to film next
-/stella I already have a topic, help me turn it into a shootable script
-```
-
-Or call a specific skill directly:
-
-```text
-/stella-ip-direction
-/stella-ip-planning
-/stella-ip-episode
-/stella-ip-script
-/stella-ip-package
-/stella-ip-review
-```
-
-## Skills Overview
-
-### `/stella`
-
-The entry point and onboarding router.
-
-Use when:
-
-- the user is new
-- the user wants to know how the system works
-- the user is not sure which skill to use
-
-Solves:
-
-- where do I start
-- what can this system do
-- what should I use next
-
-### `/stella-ip-direction`
-
-Business direction and account positioning.
-
-Use when:
-
-- the user is setting up a personal-IP system for the first time
-- the business has changed
-- the positioning needs to be redone
-
-Solves:
-
-- what the business is
-- what the product is
-- who the customer is
-- what the personal IP should do for the business
-- how the account should be positioned
-
-### `/stella-ip-planning`
-
-Long-range content planning.
-
-Use when:
-
-- the direction is already clear
-- the user needs a monthly content map
-- the user needs the next 10 episodes
-- the user needs a weekly production plan
-
-Solves:
-
-- what to film over time
-- what content pillars to use
-- what topics to prioritize
-
-### `/stella-ip-episode`
-
-Single-episode planning.
-
-Use when:
-
-- the user needs to decide what this episode should do
-- the user has multiple topic options
-- the user wants to define one strong angle before scripting
-
-Solves:
-
-- what this episode is about
-- who it is for
-- what the main goal is
-- what format it should use
-
-### `/stella-ip-script`
-
-Filming-ready script and shot plan.
-
-Use when:
-
-- the topic is decided
-- the user needs a talking-head script
-- the user needs a hybrid talking-head plus B-roll plan
-- the user needs a shot list or directing package
-
-Solves:
-
-- spoken script
-- hook
-- A-roll and B-roll design
-- shot list
-- filming notes
-
-### `/stella-ip-package`
-
-Release packaging and AI-tone cleanup.
-
-Use when:
-
-- the content already exists in draft form
-- the user needs titles
-- the user needs cover text
-- the user needs captions
-- the user wants to reduce AI-tone signals
-
-Solves:
-
-- final hook refinement
-- release-layer packaging
-- title candidates
-- caption polish
-- AI-tone cleanup
-
-### `/stella-ip-review`
-
-Post-publish review and iteration.
-
-Use when:
-
-- the user has published content
-- the user wants to know what worked
-- the user wants to improve the next batch
-
-Solves:
-
-- what to repeat
-- what to stop
-- what to change next
-
-### `/stella-ip-director`
-
-One-step system controller.
-
-Use when:
-
-- the user does not want to choose the right step manually
-- the user wants Stella to guide the full workflow
-
-Solves:
-
-- end-to-end workflow coordination
-
-## Memory System
-
-Stella stores context in:
-
-```text
-memory/stella-ip-director/
-```
-
-Files:
-
-- `ip-profile.md`
-- `topic-backlog.md`
-- `production-board.md`
-- `publishing-log.md`
-
-This lets the system reuse the first strategy setup instead of repeating the same onboarding every time.
-
-## Compatibility Notes
-
-- `skill.md` is the real source of truth.
-- `agents/openai.yaml` is optional UI metadata.
-- `references/memory-template.md` is required by `stella-ip-director`.
-- the default installer targets Claude-style locations for convenience, but both installers now support custom paths.
-- whether `/stella` works as a slash command depends on the host agent's own skill-loading rules. If the host does not expose slash commands automatically, the kit still works as a skill bundle, but the invocation method may differ in that environment.
-
-## File Structure
-
-```text
-stella_ip_kit/
-|-- README.md
-|-- install.ps1
-|-- install.sh
+.
+|-- .codex-plugin/
+|   `-- plugin.json
+|-- memory/
+|   `-- stella-ip-director/
+|       |-- ip-profile.md
+|       |-- topic-backlog.md
+|       |-- production-board.md
+|       `-- publishing-log.md
 |-- skills/
 |   |-- stella/
 |   |   |-- skill.md
@@ -432,24 +263,25 @@ stella_ip_kit/
 |   `-- stella-ip-review/
 |       |-- skill.md
 |       `-- agents/openai.yaml
-`-- memory/
-    `-- stella-ip-director/
-        |-- ip-profile.md
-        |-- topic-backlog.md
-        |-- production-board.md
-        `-- publishing-log.md
+|-- install.cmd
+|-- install.ps1
+`-- install.sh
 ```
 
-## Recommended First Prompt
+## 兼容性说明
 
-After install, the recommended first command is:
+- `skill.md` 才是核心能力定义
+- `agents/openai.yaml` 只是可选展示元数据
+- 对不识别 `openai.yaml` 的智能体，一般会直接忽略，不影响使用
+- 如果你的智能体不是 Claude 风格目录，可以使用自定义路径安装
 
-```text
-/stella
-```
+例如：
 
-If the user wants to be explicit:
-
-```text
-/stella I'm starting a personal IP system from scratch for my business
+```powershell
+.\install.ps1 `
+  -Target D:\path\to\project `
+  -SkillsRoot ".agents/skills" `
+  -InstructionsFile "AGENTS.md" `
+  -SkipOpenAIMetadata `
+  -SkipInstructionsBlock
 ```

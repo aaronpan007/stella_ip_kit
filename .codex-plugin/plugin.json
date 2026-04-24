@@ -1,0 +1,43 @@
+{
+  "name": "stella-ip-kit",
+  "version": "0.1.0",
+  "description": "A business-first personal IP directing system for founders, business owners, and operator-led brands.",
+  "author": {
+    "name": "Aaron Pan",
+    "email": "opensource@example.com",
+    "url": "https://github.com/aaronpan007"
+  },
+  "homepage": "https://github.com/aaronpan007/stella_ip_kit",
+  "repository": "https://github.com/aaronpan007/stella_ip_kit",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "claude-code",
+    "codex",
+    "personal-ip",
+    "content-system",
+    "creator-workflow"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Stella IP Kit",
+    "shortDescription": "业务负责人个人 IP 编导系统",
+    "longDescription": "从业务定向、账号定位、长期规划、单期策划，到脚本、拍摄执行、标题包装与复盘的一整套个人 IP 工作流。",
+    "developerName": "Aaron Pan",
+    "category": "Productivity",
+    "capabilities": [
+      "Write",
+      "Plan",
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/aaronpan007/stella_ip_kit",
+    "privacyPolicyURL": "https://github.com/aaronpan007/stella_ip_kit",
+    "termsOfServiceURL": "https://github.com/aaronpan007/stella_ip_kit",
+    "defaultPrompt": [
+      "帮我初始化这套个人IP系统",
+      "帮我规划接下来10期拍什么",
+      "帮我把这期内容写成可拍的口播脚本"
+    ],
+    "brandColor": "#8C6A4A"
+  }
+}
