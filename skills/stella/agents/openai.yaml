@@ -1,0 +1,3 @@
+interface:
+  display_name: "Stella"
+  short_description: "Onboard and route users through the Stella personal IP system."
